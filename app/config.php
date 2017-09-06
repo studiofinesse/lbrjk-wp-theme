@@ -12,7 +12,7 @@ function wp_theme_config() {
 		add_image_size('avatar', 150, 150, true);
 		add_image_size('square', 400, 400, true);
 		add_image_size('square-large', 800, 800, true);
-		add_image_size('hero', 1500, 800, true);
+		add_image_size('hero', 1500, 1000, true);
 	}
 
 	// Register Nav Menus
