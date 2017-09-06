@@ -29,7 +29,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-site-options"
+                "value": "lj-options-analytics"
             }
         ]
     ],
@@ -41,5 +41,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1486584922
+    "modified": 1504730193
 }

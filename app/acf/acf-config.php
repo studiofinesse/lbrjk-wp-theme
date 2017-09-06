@@ -28,12 +28,59 @@ add_filter('acf/settings/load_json', 'acf_load_directory');
  *  1 - Site Options
  */
 if(function_exists('acf_add_options_page')) {
+
 	acf_add_options_page(array(
 		'page_title' => 'Site Options',
 		'menu_title' => 'Site Options',
-		'menu-slug'  => 'site-options',
-		'capability' => 'edit_pages',
+		'menu_slug'  => 'lj-options',
 		'icon_url'   => 'dashicons-screenoptions',
 		'position'   => 3
 	));
+
+	acf_add_options_page([
+		'page_title'  => 'Company Information',
+		'menu_title'  => 'Company Info',
+		'menu_slug'    => 'lj-options-company-info',
+		'parent_slug' => 'lj-options',
+		'autoload'    => true
+	]);
+
+	acf_add_options_page([
+		'page_title'  => 'Theme Options',
+		'menu_title'  => 'Theme Options',
+		'menu_slug'    => 'lj-options-theme-options',
+		'parent_slug' => 'lj-options',
+		'autoload'    => true
+	]);
+
+	acf_add_options_page([
+		'page_title'  => 'Analytics',
+		'menu_title'  => 'Analytics',
+		'menu_slug'    => 'lj-options-analytics',
+		'parent_slug' => 'lj-options',
+		'autoload'    => true
+	]);
+
 }
+
+// Run do_shortcode on all textarea values
+function my_acf_format_value($value, $post_id, $field) {
+	$value = do_shortcode($value);
+	return $value;
+}
+add_filter('acf/format_value/type=textarea', 'my_acf_format_value', 10, 3);
+add_filter('acf/format_value/type=text', 'my_acf_format_value', 10, 3);
+
+/**
+ * Update ACF Google Maps API key
+ * @return string The new key
+ */
+function my_acf_init() {
+	$key = get_field('site_google_maps_api_key', 'option');
+	if(!$key) {
+		return;
+	} else {
+		acf_update_setting('google_api_key', $key);
+	}
+}
+add_action('acf/init', 'my_acf_init');
