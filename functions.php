@@ -3,9 +3,9 @@
 // Define constants
 define('THEME', get_stylesheet_directory_uri());
 define('THEME_PATH', realpath(__DIR__));
-define('IMG', THEME . '/assets/img');
-define('STYLES', THEME . '/assets/css');
-define('JS', THEME . '/assets/js');
+define('IMG', THEME . '/dist/img');
+define('STYLES', THEME . '/dist/css');
+define('JS', THEME . '/dist/js');
 
 // ACF
 include_once('app/acf/acf-config.php');
