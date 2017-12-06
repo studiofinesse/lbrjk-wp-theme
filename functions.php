@@ -19,4 +19,3 @@ include_once('app/config.php');
 include_once('app/helpers.php');
 include_once('app/icons.php');
 include_once('app/scripts.php');
-include_once('app/social.php');
