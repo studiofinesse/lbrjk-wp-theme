@@ -1,11 +1,75 @@
 {
     "key": "group_59b05cac73bed",
-    "title": "Theme Options",
+    "title": "Tools",
     "fields": [
         {
+            "key": "field_5a295e834094f",
+            "label": "Google Analytics",
+            "name": "google_analytics",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_56bca2beeb91e",
+                    "label": "Tracking Code",
+                    "name": "google_analytics_tracking_code",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_5a2962df66e7f",
+                    "label": "Allowed Users Roles",
+                    "name": "google_analytics_allowed_roles",
+                    "type": "checkbox",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "administrator": "Administrator",
+                        "editor": "Editor",
+                        "author": "Author",
+                        "contributor": "Contributor",
+                        "subscriber": "Subscriber",
+                        "guest": "Guest"
+                    },
+                    "allow_custom": 0,
+                    "save_custom": 0,
+                    "default_value": [],
+                    "layout": "horizontal",
+                    "toggle": 1,
+                    "return_format": "value"
+                }
+            ]
+        },
+        {
             "key": "field_59b05cbbc7e6a",
-            "label": "Google Maps Support",
-            "name": "theme_google_maps",
+            "label": "Google Maps",
+            "name": "google_maps",
             "type": "group",
             "instructions": "",
             "required": 0,
@@ -20,7 +84,7 @@
                 {
                     "key": "field_59b05cdfc7e6b",
                     "label": "Enable Google Maps",
-                    "name": "site_google_maps_support",
+                    "name": "google_maps_support",
                     "type": "true_false",
                     "instructions": "",
                     "required": 0,
@@ -39,7 +103,7 @@
                 {
                     "key": "field_59b05d12c7e6c",
                     "label": "Api Key",
-                    "name": "site_google_maps_api_key",
+                    "name": "google_maps_api_key",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -97,7 +161,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "lj-options-theme-options"
+                "value": "lj-options-tools"
             }
         ]
     ],
@@ -109,5 +173,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1504731163
+    "modified": 1512662031
 }

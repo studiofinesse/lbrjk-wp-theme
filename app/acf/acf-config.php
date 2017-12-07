@@ -38,25 +38,25 @@ if(function_exists('acf_add_options_page')) {
 	));
 
 	acf_add_options_page([
-		'page_title'  => 'Company Information',
-		'menu_title'  => 'Company Info',
-		'menu_slug'    => 'lj-options-company-info',
+		'page_title'  => 'Company',
+		'menu_title'  => 'Company',
+		'menu_slug'    => 'lj-options-company',
 		'parent_slug' => 'lj-options',
 		'autoload'    => true
 	]);
 
 	acf_add_options_page([
-		'page_title'  => 'Theme Options',
-		'menu_title'  => 'Theme Options',
-		'menu_slug'    => 'lj-options-theme-options',
+		'page_title'  => 'Tools',
+		'menu_title'  => 'Tools',
+		'menu_slug'    => 'lj-options-tools',
 		'parent_slug' => 'lj-options',
 		'autoload'    => true
 	]);
 
 	acf_add_options_page([
-		'page_title'  => 'Analytics',
-		'menu_title'  => 'Analytics',
-		'menu_slug'    => 'lj-options-analytics',
+		'page_title'  => 'Footer',
+		'menu_title'  => 'Footer',
+		'menu_slug'    => 'lj-options-footer',
 		'parent_slug' => 'lj-options',
 		'autoload'    => true
 	]);

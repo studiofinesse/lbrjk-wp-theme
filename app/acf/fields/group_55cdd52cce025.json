@@ -60,6 +60,44 @@
             "layout": "block",
             "sub_fields": [
                 {
+                    "key": "field_5a28161743dba",
+                    "label": "Address Line 1",
+                    "name": "company_address_1",
+                    "type": "text",
+                    "instructions": "Optional",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5a28165fd8a07",
+                    "label": "Address Line 2",
+                    "name": "company_address_2",
+                    "type": "text",
+                    "instructions": "Optional",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
                     "key": "field_59b05a502a05f",
                     "label": "Street Address",
                     "name": "company_street",
@@ -138,24 +176,6 @@
             ]
         },
         {
-            "key": "field_55d1aeb62374d",
-            "label": "Location",
-            "name": "company_location",
-            "type": "google_map",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "center_lat": "",
-            "center_lng": "",
-            "zoom": "",
-            "height": ""
-        },
-        {
             "key": "field_55cdd54dd8eb5",
             "label": "Telephone Number",
             "name": "company_tel",
@@ -193,82 +213,6 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_554fb4fdc5db5",
-            "label": "Social Media Accounts",
-            "name": "social_media_accounts",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "Add Account",
-            "sub_fields": [
-                {
-                    "key": "field_554fb573c5db6",
-                    "label": "Account",
-                    "name": "social_media_account",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "facebook": "Facebook",
-                        "twitter": "Twitter",
-                        "instagram": "Instagram",
-                        "google-plus": "Google+",
-                        "pinterest": "Pinterest",
-                        "tumblr": "Tumblr",
-                        "flickr": "Flickr",
-                        "linkedin": "LinkedIn",
-                        "youtube": "YouTube",
-                        "vimeo": "Vimeo",
-                        "skype": "Skype"
-                    },
-                    "default_value": [],
-                    "allow_null": 1,
-                    "multiple": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "return_format": "array",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_554fb58fc5db7",
-                    "label": "URL",
-                    "name": "social_media_account_url",
-                    "type": "text",
-                    "instructions": "Full URL of social media account e.g. https:\/\/twitter.com\/manutd",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": "",
-                    "readonly": 0,
-                    "disabled": 0
-                }
-            ]
         }
     ],
     "location": [
@@ -276,7 +220,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "lj-options-company-info"
+                "value": "lj-options-company"
             }
         ]
     ],
@@ -288,5 +232,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1504730185
+    "modified": 1512661058
 }
