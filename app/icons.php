@@ -10,6 +10,7 @@ function site_shortcut_icons() {
 	$prefix = 'favicon';
 	$path = $dir . '/' . $prefix;
 
+	echo '<!-- Icons -->';
 	echo '<link rel="shortcut icon" href="' . $path . '.ico">';
 	echo '<link rel="icon" sizes="16x16 32x32 64x64" href="' . $path . '.ico">';
 	echo '<link rel="icon" type="image/png" sizes="196x196" href="' . $path . '-192.png">';
