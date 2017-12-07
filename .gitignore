@@ -22,3 +22,6 @@ hostconfig.json
 .sass-cache
 *.sublime*
 !.gitkeep
+
+# testing
+tpl-test.php
