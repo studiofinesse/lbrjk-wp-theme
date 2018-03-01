@@ -6,5 +6,10 @@
  */
 get_header();
 the_post();
-the_content();
-get_footer();
+?>
+
+<article class="post post--page">
+	<?php the_content(); ?>
+</article>
+
+<?php get_footer(); ?>
