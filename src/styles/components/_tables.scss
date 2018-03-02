@@ -1,0 +1,43 @@
+table {
+	@include font-size(14);
+
+	max-width: 100%;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+
+	article & {
+		margin-bottom: 2em;
+	}
+}
+
+th {
+	padding: 0.75em;
+	background: $light-grey;
+	border: none;
+	font-weight: $body-font-bold;
+	text-align: left;
+}
+
+td {
+	padding: 0.75em;
+	border: solid 1px $light-grey;
+}
+
+// Responsive tables
+// ------------------------- //
+// Using overflow-x to hide overflowed table content
+// Method taken from Bootstrap's responsive table solution
+.table--responsive {
+	width: 100%;
+	margin-bottom: 30px;
+	overflow-x: auto;
+	border: {
+		style: solid solid none none;
+		width: 1px;
+		color: $light-grey;
+	}
+
+	table { margin-bottom: 0; }
+	th,td { white-space: nowrap; }
+}

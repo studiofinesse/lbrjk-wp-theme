@@ -1,0 +1,20 @@
+///
+// Calculate ems from pixel value
+// @param  {int} $pixels   Pixel value
+// @param  {int} $context: [16] The context to calculate value from. Default: 16
+// @return {int}           The calculated em value
+///
+@function em($pixels, $context: 16) {
+    @return #{$pixels/$context}em;
+}
+
+///
+// Calculate rem from pixel value
+// @param  {int} $size Pixel value
+// @param  {int} $base The base value used to calculate
+// @return {int}       The calculated rem value
+///
+@function rem($size, $base) {
+	$rem: $size / $base;
+	@return #{$rem}rem;
+}

@@ -1,0 +1,20 @@
+.alert {
+	@include font-size(15);
+
+	display: block;
+	padding: 1em 1.5em;
+	background-color: #fff0b7;
+	border: {
+		width: 1px;
+		style: solid;
+		color: rgba(0, 0, 0, 0.05);
+	}
+	color: rgba(0, 0, 0, 0.5);
+	line-height: 1.2;
+
+	p { margin: 0; }
+
+	&--info { background-color: #d8ecf6; }
+	&--success { background-color: #d8e7d9; }
+	&--error { background-color: #f0bbc6; }
+}

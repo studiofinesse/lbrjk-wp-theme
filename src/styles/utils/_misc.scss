@@ -1,0 +1,21 @@
+// Hamburger
+@mixin hamburger($width: 20px, $offset: 4px, $bar-height: 2px, $color: null, $border-radius: null) {
+
+	position: relative;
+	width: $width;
+	height: ($offset * 2) + ($bar-height * 3);
+	cursor: pointer;
+
+	.bar {
+		position: absolute;
+		display: block;
+		height: $bar-height;
+		width: 100%;
+		background: $color;
+		border-radius: $border-radius;
+
+		&:nth-of-type(1) { top: 0; }
+		&:nth-of-type(2) { top: $offset + $bar-height; }
+		&:nth-of-type(3) { top: ($offset * 2) + ($bar-height * 2); }
+	}
+}

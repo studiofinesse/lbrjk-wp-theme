@@ -1,0 +1,41 @@
+// Square
+@mixin square($size, $corners: null) {
+	display: block;
+	height: $size;
+	width: $size;
+	border-radius: $corners;
+	line-height: $size;
+	text-align: center;
+}
+
+// Circle
+@mixin circle($size) {
+	@include square($size, $corners: 50%);
+}
+
+// Triangles / Arrows
+@mixin arrow($direction, $size, $color) {
+	display: block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+
+	@if $direction == down {
+		border: {
+			width: $size $size 0 $size;
+			color: $color transparent transparent transparent;
+		}
+	} @elseif $direction == up {
+		border: {
+			width: 0 $size $size $size;
+			color: transparent transparent $color transparent;
+		}
+	}
+}
+
+// Aspect Ratio
+@mixin aspect-ratio($x, $y) {
+	position: relative;
+	height: 0;
+	padding-top: ($y / $x) * 100%;
+}

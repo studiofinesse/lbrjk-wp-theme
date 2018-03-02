@@ -1,0 +1,25 @@
+///
+// Add all animation attributes to an element
+// @param  {str} $animation:       null          The name of the animation to use
+// @param  {str} $duration:        500ms         The length of the animation
+// @param  {str} $delay:           null          Set any delay
+// @param  {str} $fill-mode:       both          Set fill-mode
+// @param  {str} $iteration-count: null          How many times will animation fire
+///
+@mixin animated($animation: null, $duration: 500ms, $delay: null, $fill-mode: both, $iteration-count: null) {
+	animation: {
+		name: $animation;
+		duration: $duration;
+		delay: $delay;
+		fill-mode: $fill-mode;
+		iteration-count: $iteration-count;
+	}
+}
+
+// Animation Library
+// Comment in/out as needed
+@import 'fade-in/fadeIn',
+		'fade-in/fadeInDown',
+		'fade-in/fadeInDownSubtle',
+		'fade-in/fadeInUp',
+		'fade-in/fadeInUpSubtle';

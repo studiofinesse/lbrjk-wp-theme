@@ -1,0 +1,58 @@
+ul,ol {
+	padding: 0 0 0 40px;
+
+	nav & { padding: 0; }
+	article & { margin-bottom: 1em; }
+
+	li {
+		margin-bottom: 0.25em;
+
+		ul {
+			margin-top: 1em;
+			margin-bottom: 1em;
+		}
+
+		nav & {
+			list-style: none;
+			margin-bottom: 0;
+		}
+	}
+}
+
+// Social icons
+.social-icons {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+			margin: 0.5em;
+
+			a { display: block; }
+
+			// Icons
+			svg {
+				display: block;
+				width: 24px;
+				fill: $primary-brand-color;
+			}
+		}
+	}
+
+	&--branded {
+		ul li.icon {
+			&--facebook svg { fill: $facebook-brand-color; }
+			&--twitter svg { fill: $twitter-brand-color; }
+			&--instagram svg { fill: $instagram-brand-color; }
+			&--google-plus svg { fill: $google-plus-brand-color; }
+			&--pinterest svg { fill: $pinterest-brand-color; }
+			&--tumblr svg { fill: $tumblr-brand-color; }
+			&--linkedin svg { fill: $linkedin-brand-color; }
+			&--youtube svg { fill: $youtube-brand-color; }
+			&--vimeo svg { fill: $vimeo-brand-color; }
+			&--skype svg { fill: $skype-brand-color; }
+		}
+	}
+}

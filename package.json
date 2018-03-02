@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "devDependencies": {
+	"browser-sync": "*",
+	"del": "*",
+	"gulp": "*",
+	"gulp-autoprefixer": "*",
+	"gulp-cache": "*",
+	"gulp-clean-css": "*",
+	"gulp-combine-mq": "*",
+	"gulp-imagemin": "*",
+	"gulp-include": "*",
+	"gulp-notify": "*",
+	"gulp-rename": "*",
+	"gulp-sass": "*",
+	"gulp-sequence": "*",
+	"gulp-sourcemaps": "*",
+	"gulp-strip-debug": "*",
+	"gulp-uglify": "*",
+	"gulp-util": "*"
+  }
+}

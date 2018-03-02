@@ -1,0 +1,68 @@
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+// Labels
+label {
+	display: block;
+	margin-bottom: 1em;
+	font-weight: $body-font-bold;
+}
+
+// Inputs and textareas
+input[type="text"],
+input[type="email"],
+input[type="telephone"],
+input[type="password"],
+textarea {
+	width: 100%;
+	padding: 1em;
+	border: none;
+	background: transparent;
+	border: solid 1px $light-grey;
+	border-radius: 0;
+	color: $base-text-color;
+	font: {
+		family: $default-sans;
+		size: 1em;
+	}
+	text-align: center;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+// Custom select fields
+// A more native appearance for select boxes
+.field--select,
+.ginput_container_select {
+	position: relative;
+	// max-width: 50%;
+
+	select {
+		@extend input[type="text"];
+
+		appearance: none;
+	}
+
+	&:before {
+		@include align(right, center, 1em);
+		@include arrow(down, 5px, $base-text-color);
+
+		content: "";
+		pointer-events: none;
+	}
+}
+
+// Submit button
+input[type="submit"] {
+	@extend .button;
+	@extend .button--primary;
+
+	border: none;
+	cursor: pointer;
+	appearance: none;
+}

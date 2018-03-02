@@ -1,0 +1,57 @@
+.gform_fields {
+	margin-bottom: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		margin-bottom: 1em;
+	}
+}
+
+// -------------------------------------- //
+// Alerts and messages
+// -------------------------------------- //
+
+// Gravity Forms confirmation message
+.gform_confirmation_message {
+	@extend .alert;
+	@extend .alert--success;
+}
+
+// Gravity Forms error messages
+.validation_error,
+.validation_message {
+	@extend .alert;
+	@extend .alert--error;
+
+	form > & { margin: 2em 0; }
+}
+
+.gfield_error {
+
+	label {
+		border-bottom: 1px dotted #E66676;
+	}
+
+	&.gfield_contains_required {
+		position: relative;
+
+		.validation_message {
+			@include font-size(12);
+
+			display: inline-block;
+			margin-top: 1em;
+			padding: 7px 5px 5px;;
+			border-radius: 2px;
+			font-family: $default-sans;
+			line-height: 1;
+			text-indent: 1px;
+		}
+	}
+
+	&.gfield_captcha {
+		.validation_message {
+			margin-top: 1em;
+		}
+	}
+}

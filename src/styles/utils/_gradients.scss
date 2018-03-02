@@ -1,0 +1,20 @@
+///
+// Simple horizontal gradient background
+// @param  {hex} $from    Starting colour
+// @param  {hex} $to      Ending colour
+// @param  {int} $start:  [0%] Starting position
+// @param  {int} $finish: [100%] Ending position
+///
+@mixin gradient-h($from, $to, $start: 0%, $finish: 100%) {
+	background: $from;
+	background: linear-gradient(to right,  $from $start,$to $finish);
+}
+
+///
+// Simple vertical gradient
+// @see  gradient-h
+///
+@mixin gradient-v($from, $to, $start: 0%, $finish: 100%) {
+	background: $from;
+	background: linear-gradient(to bottom,  $from $start,$to $finish);
+}

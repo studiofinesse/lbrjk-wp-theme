@@ -1,0 +1,134 @@
+// -------------------------------------------------- //
+// Define layout variables
+// -------------------------------------------------- //
+
+$site-width: 1180px;
+$gutter: 50px;
+$mobile-gutter: 20px;
+
+// -------------------------------------------------- //
+// Mixins
+// -------------------------------------------------- //
+
+// Cleafix
+@mixin clearfix {
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+// Position
+@mixin position($top: null, $left: null, $bottom: null, $right: null) {
+	position: absolute;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+// Fill
+@mixin fill {
+	@include position(0, 0);
+
+	width: 100%;
+	height: 100%;
+}
+
+// Mixin
+@mixin align($x: null, $y: null, $gutter: null) {
+	position: absolute;
+
+	@if ($x == center and $y == center) or ($x == center and $y == null) {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	} @elseif $x == center {
+		left: 50%;
+		transform: translateX(-50%);
+	} @elseif $y == center {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	@if $x == left and $gutter == null {
+		left: 0;
+	} @elseif $x == right and $gutter == null {
+		right: 0;
+	} @elseif ($x == left or $x == right) and type-of($gutter) == number {
+		#{$x}: $gutter;
+	}
+
+	@if $y == top and $gutter == null {
+		top: 0;
+	} @elseif $y == bottom and $gutter == null {
+		bottom: 0;
+	} @elseif ($y == top or $y == bottom) and type-of($gutter) == number {
+		#{$y}: $gutter;
+	}
+
+	@if $y == center and $x == center and type-of($gutter) == number {
+		@error "You can't pass a gutter value if centering both axis";
+	}
+}
+
+// Reset Any Alignment
+@mixin reset-align($transform: true) {
+	position: relative;
+	top: auto;
+	bottom: auto;
+	left: auto;
+	right: auto;
+
+	@if $transform {
+		transform: none;
+	}
+}
+
+// Container
+@mixin container($width: $site-width) {
+	@include clearfix;
+
+	position: relative;
+	width: 100%;
+	max-width: $width;
+	margin: {
+		left: auto;
+		right: auto;
+	}
+	padding: 0 20px;
+
+	@include bp($tiny) { padding: 0 20px; }
+	@include bp($site-width) { padding: 0 50px; }
+	@include bp(1300px) { padding: 0; } ;
+}
+
+@mixin show($bp, $display: block) {
+	display: none;
+
+	@include bp($bp) {
+		display: $display;
+	}
+}
+
+@mixin hide($bp) {
+	@include bp($bp) {
+		display: none;
+	}
+}
+
+// Flexbox
+// ------------------ //
+
+@mixin flex-justify($align: center, $flex: flex) {
+	display: $flex;
+	justify-content: space-between;
+	align-items: $align;
+}
+
+@mixin flex-center($flex: flex) {
+	display: $flex;
+	justify-content: center;
+	align-items: center;
+}

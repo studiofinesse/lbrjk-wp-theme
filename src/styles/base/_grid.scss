@@ -1,0 +1,72 @@
+// Define grid values
+$grid-width:   1200px;
+$grid-columns: 12;
+$grid-gutter:  24px;
+$mobile-grid-gutter: $grid-gutter / 2;
+
+///
+// Grid element
+// @param  {int} $cols    How many columns to span
+// @param  {str} $gutter  The width of the gutter. Default: global gutter
+// @param  {bol} $margin  Include margins in output. Not necessary when just declaring widths for different breakpoints
+///
+@mixin grid($cols, $gutter: $grid-gutter) {
+	$width: ($cols / $grid-columns) * 100%;
+
+	width: calc(#{$width} - #{$mobile-grid-gutter});
+
+	@include bp($medium) {
+		width: calc(#{$width} - #{$grid-gutter});
+	}
+}
+
+.grid {
+	float: left;
+	width: calc(100% - #{$mobile-grid-gutter});
+	margin: $mobile-grid-gutter / 2;
+
+	@include bp($medium) {
+		margin: $grid-gutter / 2;
+	}
+
+	// Generate classes
+	@for $i from 1 to $grid-columns + 1 {
+		&--#{$i} {
+			@include grid($i);
+
+			&\@xs { @include bp($xsmall) { @include grid($i); }}
+			&\@sm { @include bp($small) { @include grid($i); }}
+			&\@md { @include bp($medium) { @include grid($i); }}
+			&\@lg { @include bp($large) { @include grid($i); }}
+			&\@xl { @include bp($x-large) { @include grid($i); }}
+		}
+	}
+
+	&--centered {
+		float: none;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+
+	&--pull-right {
+		float: right;
+	}
+}
+
+.group {
+	@include clearfix;
+
+	&--grid {
+		@extend .group;
+
+		margin-right: -($mobile-grid-gutter / 2);
+		margin-left: -($mobile-grid-gutter / 2);
+
+		@include bp($medium) {
+			margin-right: -($grid-gutter / 2);
+			margin-left: -($grid-gutter / 2);
+		}
+
+		&--justified .grid:last-child { float: right; }
+	}
+}

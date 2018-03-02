@@ -1,0 +1,26 @@
+// Define breakpoints
+$huge: 1600px;
+$x-large: 1200px;
+$large: 1024px;
+$medium: 768px;
+$small: 736px;
+$xsmall: 375px;
+$tiny: 321px;
+
+$site-width-bg: ($site-width + ($mobile-gutter*2));
+$mobile-nav-bp: $small;
+
+///
+// Insert mobile-first breakpoint declarations
+// @param  {int} $point The point at which to apply styles
+// @param  {opt} $type: [width] The type of query; width or height
+// @return {str}     A media query block of code
+ ///
+@mixin bp($point, $type: width) {
+	@if $type == "width" {
+		@media (min-width: $point) { @content; }
+	}
+	@elseif $type == "height" {
+		@media (min-height: $point) { @content; }
+	}
+}

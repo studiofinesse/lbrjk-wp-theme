@@ -1,0 +1,29 @@
+$base-line-height: 1.6;
+
+// Generic Font Declatarions
+$default-sans: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans',Oxygen,Ubuntu,'Droid Sans','Helvetica Neue',sans-serif;
+$default-serif: Georgia, Times, serif;
+
+// Site Specific Font Styles
+$body-font: $default-sans;
+$body-font-bold: 700;
+$display-font: $default-sans;
+$display-font-bold: 700;
+$heading-font: $default-sans;
+$heading-font-weight: 700;
+$heading-color: $primary-brand-color;
+
+// Links
+$link-font-weight: 400;
+$link-color: $primary-brand-color;
+$link-hover-color: $secondary-brand-color;
+
+// Buttons
+$button-font: $heading-font;
+$button-font-weight: $heading-font-weight;
+
+// Use rem of font sizes, include px fallback
+@mixin font-size($size, $base: 16) {
+	font-size: $size + px;
+	font-size: rem($size, $base);
+}

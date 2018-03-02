@@ -1,0 +1,12 @@
+.video-container {
+	@include aspect-ratio(16,9);
+
+	iframe {
+		@include fill;
+	}
+}
+
+.avatar {
+	display: block;
+	border-radius: 100%;
+}

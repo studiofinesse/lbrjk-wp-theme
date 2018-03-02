@@ -1,0 +1,43 @@
+.panel {
+	margin: 15px 0;
+	border: solid 1px $light-grey;
+	border-radius: 5px;
+
+	// Head
+	&__head {
+		padding: 16px 24px;
+
+		h6 { margin: 0; }
+
+		@include bp($large) {
+			padding: 24px 32px;
+		}
+	}
+
+	&__content {
+		padding: 0 30px 25px 30px;
+
+		p { line-height: 1.75; }
+
+		& > :last-child { margin: 0; }
+	}
+
+	// Collapse / accordian
+	&--collapse {
+		// Head
+		.panel__head {
+			position: relative;
+			cursor: pointer;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			// Add arrow icon here if necessary
+		}
+
+		&.open > .panel__head:after { transform: rotate(180deg); }
+
+		// Hide content until toggled
+		.panel__content { display: none; }
+	}
+}

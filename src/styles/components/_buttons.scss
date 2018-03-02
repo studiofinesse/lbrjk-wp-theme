@@ -1,0 +1,153 @@
+// -------------------------------------------------- //
+// Config
+// -------------------------------------------------- //
+
+$button-height: 40px;
+$large-button-height: 60px;
+
+// -------------------------------------------------- //
+// Classes
+// -------------------------------------------------- //
+
+.button {
+	display: inline-block;
+	height: $button-height;
+	padding: 0 $button-height / 1.25;
+	border: none;
+	border-radius: 0px;
+	font: {
+		family: $button-font;
+		weight: $button-font-weight;
+	}
+	line-height: $button-height;
+	text-decoration: none;
+
+	// Large Buttons
+	// ------------------------ //
+
+	&--large {
+		height: $large-button-height * 0.84;
+		padding: 0 $large-button-height / 1.25;
+		line-height: $large-button-height * 0.84;
+
+		@include bp($small) {
+			@include font-size(18);
+
+			height: $large-button-height;
+			padding: 0 $large-button-height / 1.5;
+			line-height: $large-button-height;
+		}
+	}
+
+	// Primary Buttons
+	// ------------------------ //
+
+	&--primary {
+		background: $primary-brand-color;
+		color: $white;
+
+		&:hover {
+			background: darken($primary-brand-color,10%);
+			color: $white;
+		}
+
+		&.button--ghost {
+			background: transparent;
+			border: 1px solid $primary-brand-color;
+			color: $primary-brand-color;
+
+			&:hover {
+				background: $primary-brand-color;
+				color: $white;
+			}
+		}
+	}
+
+	// Secondary Buttons
+	// ------------------------ //
+
+	&--secondary {
+		background: $secondary-brand-color;
+		color: $white;
+
+		&:hover {
+			background: darken($secondary-brand-color,10%);
+			color: $white;
+		}
+
+		&.button--ghost {
+			background: transparent;
+			border: 1px solid $secondary-brand-color;
+			color: $secondary-brand-color;
+
+			&:hover {
+				background: $secondary-brand-color;
+				color: $white;
+			}
+		}
+	}
+
+	// Alternative Buttons
+	// ------------------------ //
+
+	&--alt {
+		background: $alt-brand-color;
+		color: $white;
+
+		&:hover {
+			background: darken($alt-brand-color,10%);
+			color: $white;
+		}
+
+		&.button--ghost {
+			background: transparent;
+			border: 1px solid $alt-brand-color;
+			color: $alt-brand-color;
+
+			&:hover {
+				background: $alt-brand-color;
+				color: $white;
+			}
+		}
+	}
+
+	// White Buttons
+	// ------------------------ //
+
+	&--white {
+		background: $white;
+		color: $primary-brand-color;
+
+		&:hover {
+			background: $white;
+			color: $primary-brand-color;
+		}
+
+		&.button--ghost {
+			background: transparent;
+			border: 1px solid $white;
+			color: $white;
+
+			&:hover {
+				background: $white;
+				color: $primary-brand-color;
+			}
+		}
+	}
+
+	// Pill Buttons
+	// ------------------------ //
+
+	&--pill {
+		border-radius: $button-height / 2;
+
+		&.button--large {
+			border-radius: ($large-button-height * 0.84) / 2;
+
+			@include bp($small) {
+				border-radius: $large-button-height / 2;
+			}
+		}
+	}
+
+}
