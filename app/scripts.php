@@ -5,7 +5,7 @@
  */
 function enqueue_scripts() {
 	// Scripts
-	wp_enqueue_script('functions', JS . '/main.js', '', null, true);
+	wp_enqueue_script('functions', JS . '/main.js', ['jquery'], null, true);
 	// Stylesheets
 	wp_enqueue_style('main', STYLES . '/main.min.css', '', null, false);
 }
