@@ -4,13 +4,12 @@
 
 var fs 		      = require('fs'),
 	gulp          = require('gulp'),
-	autoprefixer  = require('gulp-autoprefixer'),
 	cache		  = require('gulp-cache'),
-	combinemq	  = require('gulp-combine-mq'),
 	minify        = require('gulp-clean-css'),
 	imagemin      = require('gulp-imagemin'),
 	include       = require('gulp-include'),
 	notify        = require('gulp-notify'),
+	postcss       = require('gulp-postcss'),
 	rename        = require('gulp-rename'),
 	sass          = require('gulp-sass'),
 	sequence	  = require('gulp-sequence'),
@@ -18,7 +17,9 @@ var fs 		      = require('fs'),
 	strip         = require('gulp-strip-debug'),
 	uglify        = require('gulp-uglify'),
 	gutil         = require('gulp-util'),
+	autoprefixer  = require('autoprefixer'),
 	browserSync   = require('browser-sync'),
+	cssmqpacker   = require('css-mqpacker'),
 	del           = require('del');
 
 /* -------------------------
@@ -68,29 +69,38 @@ var reportError = function (error) {
 // Clean
 gulp.task('clean', function(){
 	return del([
-		'__packaged',
-		'__packaged/**',
+		'__packaged{,/**}',
 		'dist/**',
 	]);
 });
 
 // Styles
 gulp.task('styles', function() {
-
 	var production = this.seq.indexOf('build') != -1;
 
 	return gulp.src('src/styles/**/*.scss')
-		.pipe(production ? gutil.noop() : sourcemaps.init())
-		.pipe(sass({outputStyle: 'compact'})).on('error', reportError)
-		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-		.pipe(combinemq())
-		.pipe(production ? minify() : gutil.noop())
-		.pipe(production ? gutil.noop() : sourcemaps.write())
-		.pipe(rename({
-			suffix: '.min'
-		}))
-		.pipe(gulp.dest('dist/css'))
-		.pipe(notify({ message: 'TASK: "styles" Completed! 💯', onLast: true }));
+	.pipe(production ? gutil.noop() : sourcemaps.init())
+	.pipe(sass({
+		outputStyle: 'expanded',
+		indentType : 'tab',
+		indentWidth: 1
+	})).on('error', reportError)
+	.pipe(postcss([
+		autoprefixer({
+			browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']
+		}),
+		cssmqpacker({
+			sort: true
+		})
+	]))
+	.pipe(production ? minify() : gutil.noop())
+	.pipe(production ? gutil.noop() : sourcemaps.write())
+	.pipe(rename({
+		suffix: '.min'
+	}))
+	.pipe(gulp.dest('dist/css'))
+	.pipe(browserSync.stream())
+	.pipe(notify({ message: 'TASK: "styles" Completed! 💯', onLast: true }));
 });
 
 // Scripts
