@@ -27,3 +27,8 @@ $button-font-weight: $heading-font-weight;
 	font-size: $size + px;
 	font-size: rem($size, $base);
 }
+
+@mixin letter-spacing($val) {
+	$tracking = $val / 1000;
+	letter-spacing: $tracking + em;
+}
