@@ -1,11 +1,14 @@
 <?php
+
 /**
  * Single blog post
  * ------------------------------ *
  * Template used to display the content of a single blog post
  */
+
 get_header();
 the_post();
+
 ?>
 
 <article class="post post--single">
@@ -13,4 +16,6 @@ the_post();
 	<?php the_content(); ?>
 </article>
 
-<?php get_footer(); ?>
+<?php
+
+get_footer();

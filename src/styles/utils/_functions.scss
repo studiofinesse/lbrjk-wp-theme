@@ -18,3 +18,10 @@
 	$rem: $size / $base;
 	@return #{$rem}rem;
 }
+
+///
+// Strip any unit declation from value
+///
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}

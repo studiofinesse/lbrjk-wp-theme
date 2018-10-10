@@ -37,8 +37,7 @@ textarea {
 
 // Custom select fields
 // A more native appearance for select boxes
-.field--select,
-.ginput_container_select {
+.field--select {
 	position: relative;
 	// max-width: 50%;
 
@@ -58,11 +57,10 @@ textarea {
 }
 
 // Submit button
+button[type="submit"]
 input[type="submit"] {
+	@include reset-button-browser-styles();
+
 	@extend .button;
 	@extend .button--primary;
-
-	border: none;
-	cursor: pointer;
-	appearance: none;
 }

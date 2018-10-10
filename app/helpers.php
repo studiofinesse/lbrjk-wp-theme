@@ -5,9 +5,9 @@
  * @param  str $path File name/path
  * @return str       Full path to included file
  */
-function get_partial($path) {
+function get_partial( $path ) {
 	$theme_root = get_stylesheet_directory();
-	$file = $theme_root . '/inc/' . $path . '.php';
+	$file = $theme_root . '/parts/' . $path . '.php';
 
-	include $file;
+	include( locate_template( $file ) ) ;
 }

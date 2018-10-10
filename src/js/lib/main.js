@@ -1,7 +1,3 @@
-//=require vendor/modernizr.js
-//=require lib/helpers.js
-//=require lib/panels.js
-
 (function($) {
 
 	// Initiate AOS

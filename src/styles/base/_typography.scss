@@ -19,6 +19,8 @@ body {
 // Global
 h1,h2,h3,h4,h5,h6 {
 	margin-top: 0;
+	margin-bottom: 1em;
+	color: $heading-color;
 	font: {
 		family: $heading-font;
 		weight: $heading-font-weight;
@@ -26,116 +28,48 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
-	@include font-size(32);
+	@include fluid-type(320, 1200, 24, 32);
 
 	line-height: 1.125;
-
-	// @include bp($medium) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($large) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($site-width) {
-	// 	@include font-size();
-	// }
 }
 
 h2 {
-	@include font-size(28);
+	@include fluid-type(320, 1200, 22, 28);
 
 	line-height: 1.125;
-
-	// @include bp($medium) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($large) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($site-width) {
-	// 	@include font-size();
-	// }
 }
 
 h3 {
-	@include font-size(24);
+	@include fluid-type(320, 1200, 20, 24);
 
 	line-height: 1.2;
-
-	// @include bp($medium) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($large) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($site-width) {
-	// 	@include font-size();
-	// }
 }
 
 h4 {
-	@include font-size(20);
+	@include fluid-type(320, 1200, 18, 20);
 
 	line-height: 1.25;
-
-	// @include bp($medium) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($large) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($site-width) {
-	// 	@include font-size();
-	// }
 }
 
 h5 {
-	@include font-size(18);
+	@include fluid-type(320, 1200, 17, 18);
 
 	line-height: 1.4;
-
-	// @include bp($medium) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($large) {
-	// 	@include font-size();
-	// }
-
-	// @include bp($site-width) {
-	// 	@include font-size(20);
-	// }
 }
 
 h6 {
-	@include font-size(16);
-
-	// @include bp($medium) {
-	// 	@include font-size(14);
-	// }
-
-	// @include bp($large) {
-	// 	@include font-size(16);
-	// }
-
-	// @include bp($site-width) {
-	// 	@include font-size(18);
-	// }
+	@include fluid-type(320, 1200, 14, 16);
 }
 
 // -------------------------------------------------- //
 // Paragraphs
 // -------------------------------------------------- //
 
-p.lead {
+p {
+	margin-top: 0;
+}
+
+.lead {
 	@include font-size(18);
 
 	color: $secondary-brand-color;
@@ -152,7 +86,7 @@ p.lead {
 a {
 	color: $link-color;
 	font-weight: $link-font-weight;
-	text-decoration: underline;
+	text-decoration: none;
 
 	&:hover {
 		color: $link-hover-color;
@@ -169,9 +103,7 @@ blockquote {
 	margin-right: 5%;
 
 	p {
-		font: {
-			style: italic;
-		}
+		font-style: italic;
 	}
 
 	cite {

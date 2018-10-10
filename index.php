@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Index template
  * ------------------------------ *
  * Template used for default archive display
  */
 get_header();
+
 ?>
 
 <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
@@ -13,4 +15,6 @@ get_header();
 	</article>
 <?php endwhile; endif; ?>
 
-<?php get_footer(); ?>
+<?php
+
+get_footer();

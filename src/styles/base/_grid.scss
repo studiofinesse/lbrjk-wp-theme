@@ -2,71 +2,86 @@
 $grid-width:   1200px;
 $grid-columns: 12;
 $grid-gutter:  24px;
-$mobile-grid-gutter: $grid-gutter / 2;
+$grid-gutter-half: $grid-gutter * 0.5;
+$grid-gutter-compensation: $grid-gutter-half * -1;
 
-///
-// Grid element
-// @param  {int} $cols    How many columns to span
-// @param  {str} $gutter  The width of the gutter. Default: global gutter
-// @param  {bol} $margin  Include margins in output. Not necessary when just declaring widths for different breakpoints
-///
-@mixin grid($cols, $gutter: $grid-gutter) {
-	$width: ($cols / $grid-columns) * 100%;
+// Breakpoints
+$grid-breakpoints:
+	xs $xsmall,
+	sm $small,
+	md $medium,
+	lg $large,
+	xl $xlarge;
 
-	width: calc(#{$width} - #{$mobile-grid-gutter});
-
-	@include bp($medium) {
-		width: calc(#{$width} - #{$grid-gutter});
-	}
-}
-
-.grid {
-	float: left;
-	width: calc(100% - #{$mobile-grid-gutter});
-	margin: $mobile-grid-gutter / 2;
-
-	@include bp($medium) {
-		margin: $grid-gutter / 2;
-	}
-
-	// Generate classes
-	@for $i from 1 to $grid-columns + 1 {
-		&--#{$i} {
-			@include grid($i);
-
-			&\@xs { @include bp($xsmall) { @include grid($i); }}
-			&\@sm { @include bp($small) { @include grid($i); }}
-			&\@md { @include bp($medium) { @include grid($i); }}
-			&\@lg { @include bp($large) { @include grid($i); }}
-			&\@xl { @include bp($x-large) { @include grid($i); }}
-		}
-	}
-
-	&--centered {
-		float: none;
-		margin-left: auto !important;
-		margin-right: auto !important;
-	}
-
-	&--pull-right {
-		float: right;
-	}
-}
-
+// A group of grid items
 .group {
-	@include clearfix;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
 
-	&--grid {
-		@extend .group;
+	margin-right: $grid-gutter-compensation;
+	margin-left: $grid-gutter-compensation;
+}
 
-		margin-right: -($mobile-grid-gutter / 2);
-		margin-left: -($mobile-grid-gutter / 2);
+// Main grid item class
+.grid {
+	flex: 0 0 auto;
+	flex-basis: 100%;
+	width: 100%;
+	margin-top: $grid-gutter-half;
+	margin-bottom: $grid-gutter-half;
+	padding-left: $grid-gutter-half;
+	padding-right: $grid-gutter-half;
+}
 
-		@include bp($medium) {
-			margin-right: -($grid-gutter / 2);
-			margin-left: -($grid-gutter / 2);
+[class^="fx-"],
+[class*=" fx-"] { display: flex; }
+
+// Helpers
+.fx-col { flex-direction: column; }
+.fx-reverse { flex-direction: row-reverse; }
+.fx-justify { justify-content: space-between; }
+.fx-middle { align-items: center; }
+.fx-center { justify-content: center; }
+.fx-start { justify-content: flex-start; }
+.fx-end { justify-content: flex-end; }
+.fx-top { align-items: flex-start; }
+.fx-bottom { align-items: flex-end; }
+.fx-wrap { flex-wrap: wrap; }
+
+@for $i from 1 through $grid-columns {
+	.grid-#{$i} {
+		flex-basis: 100% / $grid-columns * $i;
+		width: 100% / $grid-columns * $i;
+	}
+}
+
+@each $bp in $grid-breakpoints {
+	$name: nth($bp, 1);
+	$size: nth($bp, 2);
+
+	@include bp($size) {
+
+		.#{$name}\:grid {
+			@for $i from 1 through $grid-columns {
+				&-#{$i} {
+					flex-basis: 100% / $grid-columns * $i;
+					width: 100% / $grid-columns * $i;
+				}
+			}
 		}
 
-		&--justified .grid:last-child { float: right; }
+		.#{$name}\:fx { display: flex; }
+		.#{$name}\:fx-col { flex-direction: column; }
+		.#{$name}\:fx-reverse { flex-direction: row-reverse; }
+		.#{$name}\:fx-justify { justify-content: space-between; }
+		.#{$name}\:fx-middle { align-items: center; }
+		.#{$name}\:fx-center { justify-content: center; }
+		.#{$name}\:fx-start { justify-content: flex-start; }
+		.#{$name}\:fx-end { justify-content: flex-end; }
+		.#{$name}\:fx-top { align-items: flex-start; }
+		.#{$name}\:fx-bottom { align-items: flex-end; }
+		.#{$name}\:fx-wrap { flex-wrap: wrap; }
+
 	}
 }

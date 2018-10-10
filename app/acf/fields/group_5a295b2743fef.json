@@ -1,13 +1,90 @@
 {
     "key": "group_5a295b2743fef",
     "title": "Social Media Accounts",
-    "fields": false,
+    "fields": [
+        {
+            "key": "field_554fb4fdc5db5",
+            "label": "Social Media Accounts",
+            "name": "social_media_accounts",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Account",
+            "sub_fields": [
+                {
+                    "key": "field_554fb573c5db6",
+                    "label": "Account",
+                    "name": "social_media_account",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "facebook": "Facebook",
+                        "twitter": "Twitter",
+                        "instagram": "Instagram",
+                        "google-plus": "Google+",
+                        "pinterest": "Pinterest",
+                        "tumblr": "Tumblr",
+                        "flickr": "Flickr",
+                        "linkedin": "LinkedIn",
+                        "youtube": "YouTube",
+                        "vimeo": "Vimeo",
+                        "skype": "Skype"
+                    },
+                    "default_value": [],
+                    "allow_null": 1,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "array",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_554fb58fc5db7",
+                    "label": "URL",
+                    "name": "social_media_account_url",
+                    "type": "text",
+                    "instructions": "Full URL of social media account e.g. https:\/\/twitter.com\/manutd",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        }
+    ],
     "location": [
         [
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "lj-options-company-info"
+                "value": "lj-options-company"
             }
         ]
     ],
@@ -19,5 +96,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1512659762
+    "modified": 1539088871
 }

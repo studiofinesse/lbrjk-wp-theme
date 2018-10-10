@@ -25,7 +25,7 @@ var imgContainers;
 var len;
 
 if (!Modernizr.objectfit) {
-	imgContainers = document.querySelectorAll('.objectfit-container');
+	imgContainers = document.querySelectorAll('.object-fit-container');
 	len = imgContainers.length;
 
 	for (var i=0; i<len; i++) {

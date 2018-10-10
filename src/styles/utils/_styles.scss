@@ -1,0 +1,13 @@
+@mixin reset-button-browser-styles {
+	padding: 0;
+	appearance: none;
+	background: none;
+	border: none;
+	font: {
+		family: $body-font;
+		size: 1em;
+	}
+	cursor: pointer;
+
+	&:focus { outline: none; }
+}

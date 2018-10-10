@@ -1,12 +1,4 @@
 // -------------------------------------------------- //
-// Define layout variables
-// -------------------------------------------------- //
-
-$site-width: 1180px;
-$gutter: 50px;
-$mobile-gutter: 20px;
-
-// -------------------------------------------------- //
 // Mixins
 // -------------------------------------------------- //
 
@@ -86,24 +78,7 @@ $mobile-gutter: 20px;
 	}
 }
 
-// Container
-@mixin container($width: $site-width) {
-	@include clearfix;
-
-	position: relative;
-	width: 100%;
-	max-width: $width;
-	margin: {
-		left: auto;
-		right: auto;
-	}
-	padding: 0 20px;
-
-	@include bp($tiny) { padding: 0 20px; }
-	@include bp($site-width) { padding: 0 50px; }
-	@include bp(1300px) { padding: 0; } ;
-}
-
+// Hide an element until a certain breakpoint
 @mixin show($bp, $display: block) {
 	display: none;
 
@@ -112,6 +87,7 @@ $mobile-gutter: 20px;
 	}
 }
 
+// Hide an element at a certain breakpoint
 @mixin hide($bp) {
 	@include bp($bp) {
 		display: none;

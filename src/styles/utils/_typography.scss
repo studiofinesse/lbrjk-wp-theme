@@ -19,8 +19,8 @@ $link-color: $primary-brand-color;
 $link-hover-color: $secondary-brand-color;
 
 // Buttons
-$button-font: $heading-font;
-$button-font-weight: $heading-font-weight;
+$button-font: $body-font;
+$button-font-weight: $body-font-bold;
 
 // Use rem of font sizes, include px fallback
 @mixin font-size($size, $base: 16) {
@@ -29,6 +29,25 @@ $button-font-weight: $heading-font-weight;
 }
 
 @mixin letter-spacing($val) {
-	$tracking = $val / 1000;
-	letter-spacing: $tracking + em;
+	$tracking: $val / 1000;
+	letter-spacing: $tracking * 1em;
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+	$u1: unit($min-vw);
+	$u2: unit($max-vw);
+	$u3: unit($min-font-size);
+	$u4: unit($max-font-size);
+
+	@if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+		& {
+			font-size: $min-font-size;
+			@media screen and (min-width: $min-vw) {
+				font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+			}
+			@media screen and (min-width: $max-vw) {
+				font-size: $max-font-size;
+			}
+		}
+	}
 }

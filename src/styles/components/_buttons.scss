@@ -10,7 +10,8 @@ $large-button-height: 60px;
 // -------------------------------------------------- //
 
 .button {
-	display: inline-block;
+	@include flex-center( inline-flex );
+
 	height: $button-height;
 	padding: 0 $button-height / 1.25;
 	border: none;
@@ -19,7 +20,6 @@ $large-button-height: 60px;
 		family: $button-font;
 		weight: $button-font-weight;
 	}
-	line-height: $button-height;
 	text-decoration: none;
 
 	// Large Buttons
@@ -28,14 +28,12 @@ $large-button-height: 60px;
 	&--large {
 		height: $large-button-height * 0.84;
 		padding: 0 $large-button-height / 1.25;
-		line-height: $large-button-height * 0.84;
 
 		@include bp($small) {
 			@include font-size(18);
 
 			height: $large-button-height;
 			padding: 0 $large-button-height / 1.5;
-			line-height: $large-button-height;
 		}
 	}
 
