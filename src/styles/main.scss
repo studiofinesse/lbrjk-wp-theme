@@ -1,22 +1,26 @@
-@import 		// Lib
-		'utils/layout',
-		'utils/breakpoints',
-		'utils/colours',
-		'utils/functions',
-		'utils/gradients',
-		'utils/misc',
-		'utils/shapes',
-		'utils/styles',
-		'utils/typography',
+@import // Lib
+		'lib/layout',
+		'lib/breakpoints',
+		'lib/colours',
+		'lib/functions',
+		'lib/gradients',
+		'lib/misc',
+		'lib/shapes',
+		'lib/styles',
+		'lib/typography',
+		'lib/buttons',
 		// Vendor
 		'vendor/gravity-forms',
 		'vendor/aos/aos',
-		// Animations
-		'animations/config',
 		// Base
 		'base/reset',
 		'base/grid',
 		'base/typography',
+		// Utility Classes
+		'utils/layout',
+		'utils/theme',
+		'utils/typography',
+		'utils/misc',
 		// Components
 		'components/alerts',
 		'components/buttons',

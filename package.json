@@ -3,9 +3,10 @@
   "devDependencies": {
     "beepbeep": "^1.2.2",
     "browser-sync": "^2.11.1",
+    "del": "^3.0.0",
     "eslint": "^5.5.0",
     "eslint-config-wordpress": "^2.0.0",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-cache": "^1.0.2",
     "gulp-concat": "^2.5.2",
@@ -22,5 +23,8 @@
     "gulp-sourcemaps": "^2.6.2",
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.0.6"
+  },
+  "dependencies": {
+    "gulp-zip": "^4.2.0"
   }
 }

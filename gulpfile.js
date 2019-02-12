@@ -19,6 +19,7 @@ uglify       = require( 'gulp-uglify' ), // Minifies JS files.
 imagemin     = require( 'gulp-imagemin' ), // Minify PNG, JPEG, GIF and SVG images with imagemin.
 
 // Utility related plugins.
+del 	     = require( 'del' ),
 rename       = require( 'gulp-rename' ), // Renames files E.g. style.css -> style.min.css.
 lineec       = require( 'gulp-line-ending-corrector' ), // Consistent Line Endings for non UNIX systems. Gulp Plugin for Line Ending Corrector (A utility that makes sure your files have consistent line endings).
 filter       = require( 'gulp-filter' ), // Enables you to work on a subset of the original files by filtering them using a glob.
@@ -29,7 +30,8 @@ sort         = require( 'gulp-sort' ), // Recommended to prevent unnecessary cha
 cache        = require( 'gulp-cache' ), // Cache files in stream for later use.
 remember     = require( 'gulp-remember' ), //  Adds all the files it has ever seen back into the stream.
 plumber      = require( 'gulp-plumber' ), // Prevent pipe breaking caused by errors from gulp plugins.
-beep         = require( 'beepbeep' );
+beep         = require( 'beepbeep' ),
+zip			 = require( 'gulp-zip' );
 
 const PATHS = {
 	styles: "src/styles/**/*.scss",
@@ -38,6 +40,20 @@ const PATHS = {
 	images: "src/img/**/*.{jpg,png,gif,svg}",
 	fonts: "src/fonts/**/*.{eot,ttf,svg,woff,woff2}"
 };
+
+const BUILD = {
+	path: "__packaged",
+	files: [
+		'**/*',
+		'!{__packaged,__packaged/**}',
+		'!{node_modules,node_modules/**}',
+		'!{src,src/**}',
+		'!browserSync.json',
+		'!gulpfile.js',
+		'!package.json',
+		'!README.md'
+	]
+}
 
 /**
  * Custom Error Handler.
@@ -51,6 +67,15 @@ const errorHandler = r => {
 	// this.emit('end');
 };
 
+// Clean
+gulp.task('clean', function(){
+	return del([
+		'__packaged',
+		'__packaged/**',
+		'dist/**',
+	]);
+});
+
 /**
  * Task: `browser-sync`.
  *
@@ -60,12 +85,9 @@ const errorHandler = r => {
  * @param {Mixed} done Done.
  */
 const browsersync = done => {
-	browserSync.init({
-		proxy: 'http://wordpress.test',
-		open: false,
-		injectChanges: true,
-		watchEvents: [ 'change', 'add', 'unlink', 'addDir', 'unlinkDir' ]
-	});
+	var opts = require('./browserSync.json');
+
+	browserSync.init(opts);
 	done();
 };
 
@@ -89,32 +111,18 @@ gulp.task( 'styles', () => {
 			})
 		)
 		.on( 'error', sass.logError )
-		.pipe( sourcemaps.write({ includeContent: false }) )
-		.pipe( sourcemaps.init({ loadMaps: true }) )
 		.pipe( autoprefixer() )
-		.pipe( sourcemaps.write( './' ) )
-		.pipe( lineec() )
-		.pipe( gulp.dest( 'dist/css' ) )
-		.pipe( filter( '**/*.css' ) )
-		.pipe( mmq({ log: false }) )
-		.pipe( browserSync.stream() )
-		.pipe( rename({ suffix: '.min' }) )
-		.pipe( minifycss({ maxLineLen: 200 }) )
-		.pipe( lineec() )
+		.pipe( sourcemaps.write() )
 		.pipe( gulp.dest( 'dist/css' ) )
 		.pipe( browserSync.stream() )
 		.pipe( notify({ message: 'Styles Task Completed', onLast: true }) );
 });
 
-gulp.task( 'vendorsJS', () => {
+gulp.task( 'vendorJS', () => {
 	return gulp
-		.src( PATHS.jsVendor, { since: gulp.lastRun( 'vendorsJS' ) } )
+		.src( PATHS.jsVendor, { since: gulp.lastRun( 'vendorJS' ) } )
 		.pipe( plumber( errorHandler ) )
 		.pipe( concat( 'vendor.js' ) )
-		.pipe( lineec() )
-		.pipe( gulp.dest( 'dist/js' ) )
-		.pipe( rename({ suffix: '.min' }))
-		.pipe( uglify() )
 		.pipe( lineec() )
 		.pipe( gulp.dest( 'dist/js' ) )
 		.pipe( notify({ message: 'Vendor JS Task Completed', onLast: true }) );
@@ -125,10 +133,6 @@ gulp.task( 'customJS', () => {
 		.src( PATHS.jsCustom, { since: gulp.lastRun( 'customJS' ) } )
 		.pipe( plumber( errorHandler ) )
 		.pipe( concat( 'functions.js' ) )
-		.pipe( lineec() )
-		.pipe( gulp.dest( 'dist/js' ) )
-		.pipe( rename({ suffix: '.min' }))
-		.pipe( uglify() )
 		.pipe( lineec() )
 		.pipe( gulp.dest( 'dist/js' ) )
 		.pipe( notify({ message: 'Custom JS Task Completed', onLast: true }) );
@@ -166,13 +170,49 @@ gulp.task( 'fonts', () => {
 
 });
 
-gulp.task(
-	'default',
-	gulp.parallel( 'styles', 'vendorsJS', 'customJS', 'images', browsersync, () => {
+// Development Task
+gulp.task( 'dev', gulp.parallel( 'styles', 'vendorJS', 'customJS', 'images', browsersync, () => {
 		gulp.watch( './**/*.php', reload );
 		gulp.watch( './src/styles/**/*.scss', gulp.parallel( 'styles' ) );
-		gulp.watch( './src/js/vendor/**/*.js', gulp.series( 'vendorsJS', reload ) );
-		gulp.watch( './src/js/*.js', gulp.series( 'customJS', reload ) );
+		gulp.watch( './src/js/vendor/**/*.js', gulp.series( 'vendorJS', reload ) );
+		gulp.watch( './src/js/lib/*.js', gulp.series( 'customJS', reload ) );
 		gulp.watch( './src/img/*', gulp.series( 'images', reload ) );
 	})
 );
+
+// Production Tasks
+gulp.task( 'buildStyles', () => {
+	return gulp
+		.src( "dist/css/**/*.css" )
+		.pipe( plumber( errorHandler ) )
+		.pipe( mmq({ log: false }) )
+		.pipe( minifycss({ maxLineLen: 200 }) )
+		.pipe( lineec() )
+		.pipe( gulp.dest( 'dist/css' ) )
+});
+
+gulp.task( 'buildScripts', () => {
+	return gulp
+		.src( "dist/js/**/*.js" )
+		.pipe( uglify() )
+		.pipe( lineec() )
+		.pipe( gulp.dest( 'dist/js' ) )
+});
+
+gulp.task( 'build', gulp.series( 'clean', 'fonts', 'images', 'styles', 'buildStyles', 'vendorJS', 'customJS', 'buildScripts' ) );
+
+gulp.task( 'package', gulp.series('build', () => {
+	return gulp
+		.src(BUILD.files, { base: '.' })
+		.pipe(gulp.dest(BUILD.path))
+}));
+
+const path = __dirname;
+const directory = path.substr(path.lastIndexOf('/') + 1);
+
+gulp.task( 'zip', gulp.series('build'), () => {
+	return gulp
+		.src(BUILD.files, { base: '.' })
+		.pipe( zip(directory + '.zip') )
+		.pipe( gulp.dest( 'zip' ) )
+});

@@ -7,11 +7,11 @@ $grid-gutter-compensation: $grid-gutter-half * -1;
 
 // Breakpoints
 $grid-breakpoints:
-	xs $xsmall,
-	sm $small,
-	md $medium,
-	lg $large,
-	xl $xlarge;
+	xs 365px,
+	sm 667px,
+	md 768px,
+	lg 1024px,
+	xl 1200px;
 
 // A group of grid items
 .group {
@@ -28,26 +28,25 @@ $grid-breakpoints:
 	flex: 0 0 auto;
 	flex-basis: 100%;
 	width: 100%;
-	margin-top: $grid-gutter-half;
-	margin-bottom: $grid-gutter-half;
 	padding-left: $grid-gutter-half;
 	padding-right: $grid-gutter-half;
 }
 
-[class^="fx-"],
-[class*=" fx-"] { display: flex; }
+.u-fx,
+[class^="u-fx-"],
+[class*=" u-fx-"] { display: flex; }
 
 // Helpers
-.fx-col { flex-direction: column; }
-.fx-reverse { flex-direction: row-reverse; }
-.fx-justify { justify-content: space-between; }
-.fx-middle { align-items: center; }
-.fx-center { justify-content: center; }
-.fx-start { justify-content: flex-start; }
-.fx-end { justify-content: flex-end; }
-.fx-top { align-items: flex-start; }
-.fx-bottom { align-items: flex-end; }
-.fx-wrap { flex-wrap: wrap; }
+.u-fx-col { flex-direction: column; }
+.u-fx-reverse { flex-direction: row-reverse; }
+.u-fx-justify { justify-content: space-between; }
+.u-fx-middle { align-items: center; }
+.u-fx-center { justify-content: center; }
+.u-fx-start { justify-content: flex-start; }
+.u-fx-end { justify-content: flex-end; }
+.u-fx-top { align-items: flex-start; }
+.u-fx-bottom { align-items: flex-end; }
+.u-fx-wrap { flex-wrap: wrap; }
 
 @for $i from 1 through $grid-columns {
 	.grid-#{$i} {
@@ -71,17 +70,17 @@ $grid-breakpoints:
 			}
 		}
 
-		.#{$name}\:fx { display: flex; }
-		.#{$name}\:fx-col { flex-direction: column; }
-		.#{$name}\:fx-reverse { flex-direction: row-reverse; }
-		.#{$name}\:fx-justify { justify-content: space-between; }
-		.#{$name}\:fx-middle { align-items: center; }
-		.#{$name}\:fx-center { justify-content: center; }
-		.#{$name}\:fx-start { justify-content: flex-start; }
-		.#{$name}\:fx-end { justify-content: flex-end; }
-		.#{$name}\:fx-top { align-items: flex-start; }
-		.#{$name}\:fx-bottom { align-items: flex-end; }
-		.#{$name}\:fx-wrap { flex-wrap: wrap; }
+		.#{$name}\:u-fx { display: flex; }
+		.#{$name}\:u-fx-col { flex-direction: column; }
+		.#{$name}\:u-fx-reverse { flex-direction: row-reverse; }
+		.#{$name}\:u-fx-justify { justify-content: space-between; }
+		.#{$name}\:u-fx-middle { align-items: center; }
+		.#{$name}\:u-fx-center { justify-content: center; }
+		.#{$name}\:u-fx-start { justify-content: flex-start; }
+		.#{$name}\:u-fx-end { justify-content: flex-end; }
+		.#{$name}\:u-fx-top { align-items: flex-start; }
+		.#{$name}\:u-fx-bottom { align-items: flex-end; }
+		.#{$name}\:u-fx-wrap { flex-wrap: wrap; }
 
 	}
 }

@@ -2,6 +2,7 @@
 !README.md
 
 browserSync.json
+package-lock.json
 node_modules
 __packaged
 .DS_Store

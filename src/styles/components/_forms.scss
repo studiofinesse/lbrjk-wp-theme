@@ -16,7 +16,9 @@ input[type="text"],
 input[type="email"],
 input[type="telephone"],
 input[type="password"],
-textarea {
+textarea,
+.field--select select,
+.ginput_container_select select {
 	width: 100%;
 	padding: 1em;
 	border: none;
@@ -37,15 +39,11 @@ textarea {
 
 // Custom select fields
 // A more native appearance for select boxes
-.field--select {
+.field--select,
+.ginput_container_select {
 	position: relative;
-	// max-width: 50%;
 
-	select {
-		@extend input[type="text"];
-
-		appearance: none;
-	}
+	select { appearance: none; }
 
 	&:before {
 		@include align(right, center, 1em);
@@ -57,10 +55,7 @@ textarea {
 }
 
 // Submit button
-button[type="submit"]
+button[type="submit"],
 input[type="submit"] {
-	@include reset-button-browser-styles();
-
-	@extend .button;
-	@extend .button--primary;
+	@include button-theme($primary-brand-color);
 }

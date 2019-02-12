@@ -6,3 +6,10 @@
 
 	&--full { width: 100%; }
 }
+
+.sm\:w-100 {
+	@include bp($small, max) {
+		width: 100%;
+		overflow-x: hidden;
+	}
+}

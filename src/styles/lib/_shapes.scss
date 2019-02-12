@@ -1,15 +1,15 @@
 // Square
-@mixin square($size, $corners: null) {
-	display: block;
+@mixin square($size: null, $corners: null) {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
 	height: $size;
 	width: $size;
 	border-radius: $corners;
-	line-height: $size;
-	text-align: center;
 }
 
 // Circle
-@mixin circle($size) {
+@mixin circle($size: null) {
 	@include square($size, $corners: 50%);
 }
 
