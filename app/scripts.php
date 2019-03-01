@@ -1,5 +1,7 @@
 <?php
 
+if( ! defined('ABSPATH' ) ) exit;
+
 /**
  * Enqueue all necessary scripts and stylesheets
  */

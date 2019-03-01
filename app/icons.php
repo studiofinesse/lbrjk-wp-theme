@@ -1,5 +1,7 @@
 <?php
 
+if( ! defined('ABSPATH' ) ) exit;
+
 /**
  * Include shortcut icons in head
  * @return str links to icons

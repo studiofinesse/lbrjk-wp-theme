@@ -1,5 +1,7 @@
 <?php
 
+if( ! defined('ABSPATH' ) ) exit;
+
 /**
  * Define ACF local save directory
  * @param  string $path The current path

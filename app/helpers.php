@@ -1,13 +1,22 @@
 <?php
 
-/**
- * Include file from /inc directory
- * @param  str $path File name/path
- * @return str       Full path to included file
- */
-function get_partial( $path ) {
-	$theme_root = get_stylesheet_directory();
-	$file = $theme_root . '/parts/' . $path . '.php';
+if( ! defined('ABSPATH' ) ) exit;
 
-	include( locate_template( $file ) ) ;
+/**
+ * Grabs the part from the parts folder
+ * @param string $name The name of the php file (minus the extension) to pull through.
+ * @param array|null $vars Any variables to inject into the php file
+ */
+function lj_get_part( $name, $vars = null ) {
+	if ( ! $__file = locate_template( "parts/$name.php" ) ) return;
+
+	unset( $name );
+
+	if ( is_array( $vars ) ) {
+		extract( $vars, EXTR_SKIP );
+	if ( array_key_exists( 'vars', $vars ) ) $vars = $vars['vars'];
+		else unset( $vars );
+	}
+
+	include $__file;
 }

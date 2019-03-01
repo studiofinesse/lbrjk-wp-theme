@@ -1,5 +1,7 @@
 <?php
 
+if( ! defined('ABSPATH' ) ) exit;
+
 /**
  * Single blog post
  * ------------------------------ *
@@ -11,7 +13,7 @@ the_post();
 
 ?>
 
-<article class="post post--single">
+<article>
 	<?php the_title('<h1 class="post__title">', '</h1>'); ?>
 	<?php the_content(); ?>
 </article>

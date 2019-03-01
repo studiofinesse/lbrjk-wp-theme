@@ -1,5 +1,7 @@
 <?php
 
+if( ! defined('ABSPATH' ) ) exit;
+
 /**
  * Wrap video embeds found in the_content()
  * in a surrounding div element to style

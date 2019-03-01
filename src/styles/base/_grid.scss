@@ -7,11 +7,11 @@ $grid-gutter-compensation: $grid-gutter-half * -1;
 
 // Breakpoints
 $grid-breakpoints:
-	xs 365px,
-	sm 667px,
-	md 768px,
-	lg 1024px,
-	xl 1200px;
+	xs $xsmall,
+	sm $small,
+	md $medium,
+	lg $large,
+	xl $xlarge;
 
 // A group of grid items
 .group {
@@ -83,4 +83,8 @@ $grid-breakpoints:
 		.#{$name}\:u-fx-wrap { flex-wrap: wrap; }
 
 	}
+}
+
+@function -cols($cols) {
+	@return calc((((100% + #{$grid-gutter}) / #{$grid-columns}) * #{$cols}) - #{$grid-gutter});
 }

@@ -5,6 +5,7 @@
 .bg-primary { background-color: $primary-brand-color; }
 .bg-secondary { background-color: $secondary-brand-color; }
 .bg-tertiary { background-color: $tertiary-brand-color; }
+.bg-light { background-color: $light-grey; }
 .bg-white { background-color: $white; }
 .bg-info { background-color: #e4eeff; }
 
@@ -12,7 +13,7 @@
 // Text colors
 // -------------------------------------------------- //
 
-.color-primary { color: $primary-brand-color; }
-.color-secondary { color: $secondary-brand-color; }
-.color-tertiary { color: $tertiary-brand-color; }
-.color-white { color: $white; }
+.text-primary { color: $primary-brand-color; }
+.text-secondary { color: $secondary-brand-color; }
+.text-tertiary { color: $tertiary-brand-color; }
+.text-white { color: $white; }

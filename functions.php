@@ -1,5 +1,7 @@
 <?php
 
+if( ! defined('ABSPATH' ) ) exit;
+
 // Define constants
 define( 'THEME', get_stylesheet_directory_uri() );
 define( 'THEME_PATH', realpath( __DIR__ ) );
@@ -18,4 +20,5 @@ include_once( 'app/content/posts.php' );
 include_once( 'app/config.php' );
 include_once( 'app/helpers.php' );
 include_once( 'app/icons.php' );
+include_once( 'app/media.php' );
 include_once( 'app/scripts.php' );

@@ -1,5 +1,7 @@
 <?php
 
+if( ! defined('ABSPATH' ) ) exit;
+
 // function site_content() {
 // 	$args = array(
 // 		'labels' => post_type_labels(''),

@@ -2,11 +2,12 @@
 $red:                    #9c363c;
 $blue:                   #2c5a93;
 $white:                  #fff;
-$black:                  #231f20;
+$black:                  #343736;
 $yellow:                 #e1d148;
 $green:                  #34a36a;
 $orange:                 #e44e36;
-$light-grey:             #eeeeee;
+$gold:					 #e1b263;
+$light-grey:             #eaedf0;
 $light-grey-text:        #a0a0a0;
 
 // Useful Brand Colours
@@ -27,9 +28,9 @@ $flick-brand-color-pink:  #f40083;
 $flick-brand-color-blue:  #006add;
 
 // Standard body text colour
-$base-text-color:        darken($white, 75%);
+$base-text-color:        #696969;
 
 // Brand Colours
-$primary-brand-color:    #e72d3d;
-$secondary-brand-color:  #cfa648;
+$primary-brand-color:    #236587;
+$secondary-brand-color:  $black;
 $tertiary-brand-color:   #222;

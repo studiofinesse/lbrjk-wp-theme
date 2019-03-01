@@ -31,7 +31,6 @@ cache        = require( 'gulp-cache' ), // Cache files in stream for later use.
 remember     = require( 'gulp-remember' ), //  Adds all the files it has ever seen back into the stream.
 plumber      = require( 'gulp-plumber' ), // Prevent pipe breaking caused by errors from gulp plugins.
 beep         = require( 'beepbeep' ),
-zip			 = require( 'gulp-zip' );
 
 const PATHS = {
 	styles: "src/styles/**/*.scss",
@@ -51,6 +50,7 @@ const BUILD = {
 		'!browserSync.json',
 		'!gulpfile.js',
 		'!package.json',
+		'!package-lock.json',
 		'!README.md'
 	]
 }
@@ -171,12 +171,12 @@ gulp.task( 'fonts', () => {
 });
 
 // Development Task
-gulp.task( 'dev', gulp.parallel( 'styles', 'vendorJS', 'customJS', 'images', browsersync, () => {
+gulp.task( 'dev', gulp.series( 'clean', 'images', 'fonts', 'styles', 'vendorJS', 'customJS', browsersync, () => {
 		gulp.watch( './**/*.php', reload );
 		gulp.watch( './src/styles/**/*.scss', gulp.parallel( 'styles' ) );
 		gulp.watch( './src/js/vendor/**/*.js', gulp.series( 'vendorJS', reload ) );
 		gulp.watch( './src/js/lib/*.js', gulp.series( 'customJS', reload ) );
-		gulp.watch( './src/img/*', gulp.series( 'images', reload ) );
+		// gulp.watch( './src/img/*', gulp.series( 'images', reload ) );
 	})
 );
 
@@ -207,12 +207,5 @@ gulp.task( 'package', gulp.series('build', () => {
 		.pipe(gulp.dest(BUILD.path))
 }));
 
-const path = __dirname;
-const directory = path.substr(path.lastIndexOf('/') + 1);
-
-gulp.task( 'zip', gulp.series('build'), () => {
-	return gulp
-		.src(BUILD.files, { base: '.' })
-		.pipe( zip(directory + '.zip') )
-		.pipe( gulp.dest( 'zip' ) )
-});
+// const path = __dirname;
+// const directory = path.substr(path.lastIndexOf('/') + 1);

@@ -1,34 +1,47 @@
-.button {
+.btn {
 	@include button;
 
 	// Large Buttons
-	&--large {
+	&-large {
 		@include button($button-height-lg)
 	}
 
 	// Primary Buttons
-	&--primary {
+	&-primary {
 		@include button-theme($primary-brand-color);
 	}
 
 	// Secondary Buttons
-	&--secondary {
+	&-secondary {
 		@include button-theme($secondary-brand-color);
 	}
 
 	// Tertiary Buttons
-	&--tertiary {
+	&-tertiary {
 		@include button-theme($tertiary-brand-color);
 	}
 
 	// White Buttons
-	&--white {
+	&-white {
 		@include button-theme($white);
 	}
 
+	// Black Buttons
+	&-black {
+		@include button-theme($black);
+	}
+
 	// Pill Buttons
-	&--pill {
+	&-pill {
 		border-radius: 300px;
 	}
 
+}
+
+.btn,
+.btn-large {
+	svg + span {
+		display: block;
+		margin-left: 0.625em;
+	}
 }

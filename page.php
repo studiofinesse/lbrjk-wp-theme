@@ -1,5 +1,7 @@
 <?php
 
+if( ! defined('ABSPATH' ) ) exit;
+
 /**
  * Page template
  * ------------------------------ *
@@ -11,7 +13,7 @@ the_post();
 
 ?>
 
-<article class="post post--page">
+<article>
 	<?php the_content(); ?>
 </article>
 

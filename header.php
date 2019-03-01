@@ -1,3 +1,15 @@
+<?php
+
+if( ! defined('ABSPATH' ) ) exit;
+
+/**
+* Header
+* ------------------------------ *
+* Included at the top of each page
+*/
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
