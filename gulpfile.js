@@ -30,7 +30,7 @@ sort         = require( 'gulp-sort' ), // Recommended to prevent unnecessary cha
 cache        = require( 'gulp-cache' ), // Cache files in stream for later use.
 remember     = require( 'gulp-remember' ), //  Adds all the files it has ever seen back into the stream.
 plumber      = require( 'gulp-plumber' ), // Prevent pipe breaking caused by errors from gulp plugins.
-beep         = require( 'beepbeep' ),
+beep         = require( 'beepbeep' );
 
 const PATHS = {
 	styles: "src/styles/**/*.scss",
