@@ -1,30 +1,37 @@
 {
   "private": true,
   "devDependencies": {
-    "beepbeep": "^1.2.2",
-    "browser-sync": "^2.11.1",
-    "del": "^3.0.0",
-    "eslint": "^5.5.0",
-    "eslint-config-wordpress": "^2.0.0",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/register": "^7.4.0",
+    "autoprefixer": "^9.5.0",
+    "babel-loader": "^8.0.5",
+    "browser-sync": "^2.26.3",
+    "css-mqpacker": "^7.0.0",
+    "del": "^4.1.0",
     "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^6.0.0",
-    "gulp-cache": "^1.0.2",
-    "gulp-concat": "^2.5.2",
-    "gulp-filter": "^5.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.1.0",
-    "gulp-line-ending-corrector": "^1.0.1",
-    "gulp-merge-media-queries": "^0.2.1",
-    "gulp-notify": "^3.0.0",
+    "gulp-include": "^2.3.1",
+    "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.0",
-    "gulp-remember": "^1.0.1",
-    "gulp-rename": "^1.2.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-sort": "^2.0.0",
-    "gulp-sourcemaps": "^2.6.2",
-    "gulp-uglify": "^3.0.0",
-    "gulp-uglifycss": "^1.0.6"
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-zip": "^4.2.0",
+    "node-sass-glob-importer": "^5.3.1",
+    "vinyl-named": "^1.1.0",
+    "webpack-stream": "^5.2.1",
+    "yargs": "^13.2.2"
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build --prod"
   },
   "dependencies": {
-    "gulp-zip": "^4.2.0"
+    "css-mqpacker": "^7.0.0"
   }
 }

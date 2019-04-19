@@ -7,12 +7,22 @@ if( ! defined('ABSPATH' ) ) exit;
  */
 function enqueue_scripts() {
 	// Scripts
-	wp_enqueue_script( 'vendor', JS . '/vendor.js', ['jquery'], null, true );
-	wp_enqueue_script( 'functions', JS . '/functions.js', ['vendor'], null, true );
+	wp_enqueue_script( 'functions', JS . '/functions.js', ['jquery'], null, true );
 	// Stylesheets
 	wp_enqueue_style( 'main', STYLES . '/main.css', '', null, false );
+	wp_dequeue_style( 'wp-block-library' ); // remove Gutenberg CSS
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts', 11 );
+
+function dequeue_jquery_migrate( $scripts ) {
+    if ( ! is_admin() && ! empty( $scripts->registered['jquery'] ) ) {
+        $scripts->registered['jquery']->deps = array_diff(
+            $scripts->registered['jquery']->deps,
+            [ 'jquery-migrate' ]
+        );
+    }
+}
+add_action( 'wp_default_scripts', 'dequeue_jquery_migrate' );
 
 /**
  * Disables the wp-embed script from running on every page :/
