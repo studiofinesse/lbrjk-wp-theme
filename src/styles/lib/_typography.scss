@@ -29,7 +29,7 @@ $link-hover-color: $secondary-brand-color;
 	letter-spacing: $tracking * 1em;
 }
 
-@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+@mixin fluid-type($min-font-size, $max-font-size, $min-vw: $xsmall, $max-vw: $large) {
 	$u1: unit($min-vw);
 	$u2: unit($max-vw);
 	$u3: unit($min-font-size);

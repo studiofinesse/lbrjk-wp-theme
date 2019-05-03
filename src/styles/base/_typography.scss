@@ -12,12 +12,26 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
 // -------------------------------------------------- //
 // Headings
 // -------------------------------------------------- //
 
 // Global
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6 {
 	margin-top: 0;
 	margin-bottom: 1em;
 	color: $heading-color;
@@ -27,38 +41,50 @@ h1,h2,h3,h4,h5,h6 {
 	}
 }
 
-h1 {
-	@include fluid-type(320, 1200, 24, 32);
+h1,
+.h1 {
+	@include fluid-type(24px, 32px);
+
+	line-height: 1.25;
+
+	@include bp($large) {
+		line-height: 1.125;
+	}
+}
+
+h2,
+.h2 {
+	@include fluid-type(22px, 28px);
 
 	line-height: 1.125;
 }
 
-h2 {
-	@include fluid-type(320, 1200, 22, 28);
-
-	line-height: 1.125;
-}
-
-h3 {
-	@include fluid-type(320, 1200, 20, 24);
+h3,
+.h3 {
+	@include fluid-type(20px, 24px);
 
 	line-height: 1.2;
 }
 
-h4 {
-	@include fluid-type(320, 1200, 18, 20);
+h4,
+.h4 {
+	@include fluid-type(18px, 20px);
 
 	line-height: 1.25;
 }
 
-h5 {
-	@include fluid-type(320, 1200, 17, 18);
+h5,
+.h5 {
+	@include fluid-type(17px, 18px);
 
 	line-height: 1.4;
 }
 
-h6 {
-	@include fluid-type(320, 1200, 14, 16);
+h6,
+.h6 {
+	@include fluid-type(14px, 16px);
+
+	font-weight: 600;
 }
 
 // -------------------------------------------------- //
