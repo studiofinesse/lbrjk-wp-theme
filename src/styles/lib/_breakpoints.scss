@@ -1,6 +1,6 @@
 // Define breakpoints
 $huge: 1600px;
-$xlarge: 1200px;
+$xlarge: 1280px;
 $large: 1024px;
 $medium: 900px;
 $small: 768px;
@@ -18,4 +18,22 @@ $mobile-nav-bp: $small;
  ///
 @mixin bp($point, $direction: min, $type: width) {
 	@media (#{$direction}-#{$type}: $point) { @content; }
+}
+
+@mixin utility-classes($class) {
+
+	.u-#{$class} {
+		@content;
+	}
+
+	@each $bp in $grid-breakpoints {
+		$name: nth($bp, 1);
+		$size: nth($bp, 2);
+
+		@include bp($size) {
+			.#{$name}\:u-#{$class} {
+				@content;
+			}
+		}
+	}
 }

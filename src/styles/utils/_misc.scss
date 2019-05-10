@@ -2,27 +2,41 @@
 // Shapes
 // -------------------------------------------------- //
 
-.circle { @include circle }
-.circle-16 { width: 16px; height: 16px; }
-.circle-24 { width: 24px; height: 24px; }
-.circle-32 { width: 32px; height: 32px; }
-.circle-40 { width: 40px; height: 40px; }
-.circle-48 { width: 48px; height: 48px; }
-.circle-60 { width: 60px; height: 60px; }
-.circle-64 { width: 64px; height: 64px; }
+.u-circle { @include circle }
+.u-circle-16 { width: 16px; height: 16px; }
+.u-circle-24 { width: 24px; height: 24px; }
+.u-circle-32 { width: 32px; height: 32px; }
+.u-circle-40 { width: 40px; height: 40px; }
+.u-circle-48 { width: 48px; height: 48px; }
+.u-circle-60 { width: 60px; height: 60px; }
+.u-circle-64 { width: 64px; height: 64px; }
 
 // -------------------------------------------------- //
 // Show / hide
 // -------------------------------------------------- //
 
-.hide { display: none; }
+.u-hide { display: none; }
 
-.sm\:hide {
+.sm\:u-hide {
 	@include bp($small, max) {
 		display: none;
 	}
 }
 
-.lg\:hide {
+.lg\:u-hide {
 	@include hide($large);
+}
+
+.u-hide-mobile-bp {
+	@include bp($mobile-nav-bp) {
+		display: none !important;
+	}
+}
+
+.u-show-mobile-bp {
+	display: none !important;
+
+	@include bp($mobile-nav-bp) {
+		display: block;
+	}
 }
