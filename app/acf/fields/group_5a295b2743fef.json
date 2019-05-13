@@ -45,14 +45,15 @@
                         "linkedin": "LinkedIn",
                         "youtube": "YouTube",
                         "vimeo": "Vimeo",
-                        "skype": "Skype"
+                        "skype": "Skype",
+                        "tripadvisor": "TripAdvisor"
                     },
                     "default_value": [],
                     "allow_null": 1,
                     "multiple": 0,
                     "ui": 0,
-                    "ajax": 0,
                     "return_format": "array",
+                    "ajax": 0,
                     "placeholder": ""
                 },
                 {
@@ -96,5 +97,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1539088871
+    "modified": 1557735091
 }
