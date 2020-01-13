@@ -14,7 +14,7 @@
 // @param  {int} $base The base value used to calculate
 // @return {int}       The calculated rem value
 ///
-@function rem($size, $base) {
+@function rem($size, $base: 16) {
 	$rem: $size / $base;
 	@return #{$rem}rem;
 }
