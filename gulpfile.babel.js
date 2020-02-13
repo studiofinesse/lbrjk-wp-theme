@@ -23,8 +23,9 @@ import sassglob from 'node-sass-glob-importer';
 // Image Plugins
 import imagemin from 'gulp-imagemin';
 // Scripts
+import babel from 'gulp-babel';
 import include from 'gulp-include';
-import uglify from 'gulp-uglify';
+import uglify from 'gulp-uglify-es';
 
 const bsOpts = require('./browserSync.json');
 const PRODUCTION = yargs.argv.prod;
@@ -66,6 +67,7 @@ const packaged = {
 		'!babelrc',
 		'!browserSync.json',
 		'!gulpfile.js',
+		'!gulpfile.babel.js',
 		'!package.json',
 		'!package-lock.json',
 		'!README.md'
@@ -80,7 +82,7 @@ export const styles = () => {
 		.pipe(sass({
 			importer: sassglob()
 		}).on('error', sass.logError))
-		.pipe(postcss([autoprefixer, cssmqpacker]))
+		.pipe(postcss([autoprefixer, cssmqpacker({sort: true})]))
 	    .pipe(gulpif(!PRODUCTION, sourcemaps.write()))
 		.pipe(gulpif(PRODUCTION, cleanCss({compatibility:'ie8'})))
 		.pipe(dest(paths.styles.dest))
@@ -90,6 +92,7 @@ export const styles = () => {
 export const scripts = () => {
 	return src(paths.js.src)
 		.pipe(include()).on('error', console.log)
+		.pipe(babel({ presets: [['@babel/preset-env']] }))
 		.pipe(gulpif(PRODUCTION, uglify()))
 		.pipe(dest(paths.js.dest));
 }
@@ -107,7 +110,7 @@ export const copy = () => {
 
 export const watchFiles = () => {
 	watch(paths.styles.src, styles);
-	watch(paths.js.src, series(scripts, reload));
+	watch('src/js/**/*.js', series(scripts, reload));
 	watch(['src/**/*','!src/{img,js,styles}','!src/{img,js,styles}/**/*'], series(copy, reload));
 	watch("**/*.php", reload);
 }

@@ -21,6 +21,7 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^1.0.4",
     "gulp-zip": "^4.2.0",
     "node-sass-glob-importer": "^5.3.1",
     "vinyl-named": "^1.1.0",
